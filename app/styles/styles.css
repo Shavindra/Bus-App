@@ -1,0 +1,127 @@
+html,
+body {
+    background: none;
+    color: #555555;
+}
+body {
+    font-size: 10px
+    /* Overriding Bootstrap less*/
+}
+html,
+body,
+.padding,
+.full,
+#map,
+.angular-google-map,
+.angular-google-map-container {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+h1 {
+    font-size: 2.4em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.4em;
+    background: #EEE;
+    padding: 10px;
+}
+thead {
+    background: #EDEDED;
+}
+tr:nth-child(even) {
+    background: #EFEFEF;
+}
+p,
+td,
+th {
+    font-size: 1.3em;
+}
+table {
+    width: 100%;
+}
+td,
+th {
+    padding: 6px 3px;
+}
+.route-id {
+    width: 80px;
+}
+.time {
+    width: 100px;
+}
+h1,
+h2,
+h3,
+p,
+li,
+#sidebar,
+#sidebar a,
+#sidebar-footer a {
+    text-shadow: none;
+    color: #555555;
+}
+.column-inner {
+    padding: 0 10px;
+}
+.row-offcanvas-left.active .sidebar-offcanvas {
+    min-width: 400px;
+    margin: 0;
+}
+#sidebar .nav li> a:hover {
+    /* NEVER use an ID introduce specificity :( */
+    background: none;
+}
+.full {
+    padding-top: 0;
+}
+@media screen and (max-width: 480px) {
+    .active .col-xs-11 {
+        margin: 0 0 0 400px;
+        width: 100%;
+    }
+}
+@media screen and (min-width: 400px) {}@media screen and (min-width: 480px) {
+    .active .col-sm-8,
+    .active .col-xs-11 {
+        margin: 0 0 0 400px;
+        width: calc(100% - 400px);
+    }
+}
+@media screen and (min-width: 768px) {
+    .wrapper .col-sm-8 {
+        margin: 0 0 0 -400px;
+        width: calc(100% - 400px);
+        float: right;
+    }
+    .col-sm-4 {
+        width: 398px;
+    }
+    
+    .active .nav {
+        display: none;
+    }
+}
+@media screen and (max-width: 768px) {
+    .stop-data {
+        display: none;
+    }
+    .active .stop-data {
+        display: block;
+    }
+    .row-offcanvas-left.active {
+        left: 0;
+    }
+    #sidebar {
+        margin: 0;
+        padding: 20px 0;
+    }
+    .row-offcanvas-left.active .sidebar-offcanvas {
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+}

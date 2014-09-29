@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>London Bus Timetables</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Normally wouldn't include too many CSS files using Bootstrap theme as a quick prototype -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/vendor/vendor.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+</head>
+
+<body ng-app="infoBusApp">
+    <div class="wrapper">
+
+        <div class="row row-offcanvas row-offcanvas-left">
+
+
+            <!-- sidebar -->
+			
+            <div class="column col-sm-4 col-xs-1 sidebar-offcanvas" id="sidebar">
+			<aside>
+                <div class="column-inner">
+                    <ul class="nav">
+                        <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                    <!-- COMMENT: No views included due to CORS -->
+                    <div ng-controller="InfoRoutesCtrl" class="stop-data">
+                        <H1>London Bus Timeables</H1>
+                        <div ng-switch="moduleState">
+                            <div ng-switch-when="init" class="map-init">
+                                <p>Select a stop</p>
+                            </div>
+                            <div ng-switch-when="error" class="map-error">
+                                </p>Map Error</p>
+                            </div>
+                            <div ng-switch-when="noData" class="stop-timetable">
+                                </p>Sorry can't find any bus arrival times</p>
+                            </div>
+                            <div ng-switch-when="showData" class="stop-timetable">
+                                <h2>{{stopData.name}}</h2>
+                                <h3><strong>Towards:</strong> {{stopData.towards}} </h3>
+                                <table>
+                                    <thead>
+                                        <th class="route-id">Route ID</th>
+                                        <th class="route-twd">Towards</th>
+                                        <th class="route-time">Arrive in</th>
+                                    </thead>
+                                    <tr ng-repeat="arrival in arrivals">
+                                        <td>{{arrival.routeId}}</td>
+                                        <td>{{arrival.destination}}</td>
+                                        <td>{{arrival.estimatedWait}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div ng-switch-when="mapError">map Error</div>
+                        </div>
+                    </div>
+                </div>
+			</aside>        
+			</div>
+		
+            <!-- /sidebar -->
+			
+            <!-- main right col -->
+            <div class="column col-sm-8 col-xs-11" id="main">
+			
+                <div class="full">
+			
+                    <div ng-controller="MapstopsCtrl"></div>
+                    <div ng-controller='MapstopsCtrl'></div>
+                    <map-canvas id="map" ng-controller="MapstopsCtrl"></map-canvas>
+                    <div ng-controller="InfoRoutesCtrl"></div>
+                    <!-- /col-8 -->
+          
+			</div>
+                <!-- /padding -->
+			
+            </div>
+			
+            <!-- /main -->
+
+        </div>
+
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="scripts/app.js" type="text/javascript"></script>
+    <script src="scripts/services/getbusdata.js" type="text/javascript"></script>
+    <script src="scripts/controllers/inforoutes.js" type="text/javascript"></script>
+    <script src="scripts/controllers/mapstops.js" type="text/javascript"></script>
+    <script src="scripts/directives/infostops.js"></script>
+    <script src="scripts/directives/mapcanvas.js"></script>
+    <script src="scripts/services/getstopinfo.js"></script>
+    <!-- endbuild -->
+
+
+</body>
+
+</html>
